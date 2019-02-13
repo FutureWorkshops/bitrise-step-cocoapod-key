@@ -97,6 +97,7 @@ GEM_COMMAND=""
 if [[ -f "Gemfile" || -d ".bundle" ]]; then
     echo_info "Using Gemfile configuration"
     GEM_COMMAND="bundle exec"
+    bundle install
 else
     echo_info "Using system gems"
     GEM_COMMAND=""
