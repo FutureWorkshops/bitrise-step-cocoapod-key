@@ -71,6 +71,14 @@ function validate_required_input_with_options {
     fi
 }
 
+function parse_list {
+    if [ -z "$2" ]; then
+        echo_fail "Failed to split list $1"
+    fi
+    local -n RESULT_ARRAY=$3
+    IFS='|' read -a RESULT_ARRAY <<< "$2"
+}
+
 #=======================================
 # Main
 #=======================================
@@ -81,9 +89,41 @@ echo_info "Configs:"
 echo_details "* project_name: ${project_name}"
 echo_details "* keys: ${keys}"
 echo_details "* values: [REDACTED]"
-echo
 
 validate_required_input "project_name" $project_name
 validate_required_input "keys" $keys
 validate_required_input "values" $values
 
+GEM_COMMAND=""
+if [[ -f "Gemfile" || -d ".bundle" ]]; then
+    echo_info "Using Gemfile configuration"
+    GEM_COMMAND="bundle exec"
+else
+    echo_info "Using system gems"
+    GEM_COMMAND=""
+fi
+
+eval "$GEM_COMMAND gem install cocoapods cocoapods-keys"
+
+OIFS=$IFS
+IFS='|' 
+
+read -a KEY_ARRAY <<< "${keys}"
+read -a VALUE_ARRAY <<< "${values}"
+
+KEY_LENGTH=${#KEY_ARRAY[@]}
+VALUE_LENGTH=${#VALUE_ARRAY[@]}
+
+if [ ! ${KEY_LENGTH} -eq ${VALUE_LENGTH} ]; then
+    echo_fail "Keys array and Values array do not have the same size"
+fi
+
+for (( i=0; i<${KEY_LENGTH}; i++ )); do
+    POD_KEY=${KEY_ARRAY[$i]}
+    POD_VALUE=${VALUE_ARRAY[$i]}
+
+    echo_info "Setting key ${POD_KEY}"
+    eval "$GEM_COMMAND pod keys set ${POD_KEY} ${POD_VALUE} ${project_name}"
+done
+
+IFS=$OIFS
