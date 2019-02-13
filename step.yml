@@ -1,0 +1,44 @@
+title: "Install cocoapod keys"
+summary: This step allows you to install & configure a set of keys
+description: Through the use of the gem cocoapod-keys, this step creates secure values to be useb by your application
+website: https://github.com/FutureWorkshops/bitrise-step-cocoapod-key
+source_code_url: https://github.com/FutureWorkshops/bitrise-step-cocoapod-key.git
+support_url: https://github.com/FutureWorkshops/bitrise-step-cocoapod-key/issues
+host_os_tags:
+  - osx-10.10
+project_type_tags:
+  - ios
+  - macos
+  - react-native
+  - xamarin
+type_tags:
+  - installer
+  - utility
+is_requires_admin_user: false
+is_always_run: false
+is_skippable: false
+deps:
+run_if: .IsCI
+inputs:
+  - project_name: ""
+    opts:
+      title: "Project name"
+      summary: "The name of the project. It will be used to resolve project conflict, in the case of multiple targets in the workspace"
+      description: "In case that your workspace has multiple projects, and multiple targets, a `pod key` command may fail because of the conflict in the configuration list. This solves this issue"
+      is_expand: true
+      is_reqired: true
+  - keys: ""
+    opts:
+      title: "Keys"
+      summary: "The list of keys that will be set. With `|` as a separator"
+      description: "The list of keys that will be set. With `|` as a separator. It needs to match the order and size of the `values` property"
+      is_expand: true
+      is_reqired: true
+  - values: ""
+    opts:
+      title: "Values"
+      summary: "The list of values that will be set. With `|` as a separator."
+      description: "The list of values that will be set. With `|` as a separator. It needs to match the order and size of the `keys` property"
+      is_expand: true
+      is_reqired: true
+outputs:
