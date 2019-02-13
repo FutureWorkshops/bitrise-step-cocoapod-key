@@ -90,7 +90,6 @@ echo_details "* project_name: ${project_name}"
 echo_details "* keys: ${keys}"
 echo_details "* values: [REDACTED]"
 
-validate_required_input "project_name" $project_name
 validate_required_input "keys" $keys
 validate_required_input "values" $values
 

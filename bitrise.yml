@@ -20,7 +20,7 @@ workflows:
         description: ''
         run_if: true
         inputs:
-        - project_name: "Sample"
+        - project_name: ""
         - keys: "SampleKey|SecondarySampleKey"
         - values: $VALUES
           

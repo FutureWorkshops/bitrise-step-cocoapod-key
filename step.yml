@@ -26,7 +26,7 @@ inputs:
       summary: "The name of the project. It will be used to resolve project conflict, in the case of multiple targets in the workspace"
       description: "In case that your workspace has multiple projects, and multiple targets, a `pod key` command may fail because of the conflict in the configuration list. This solves this issue"
       is_expand: true
-      is_reqired: true
+      is_reqired: false
   - keys: ""
     opts:
       title: "Keys"
