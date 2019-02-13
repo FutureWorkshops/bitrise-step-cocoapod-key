@@ -1,5 +1,5 @@
-# Extract Xcode settings
-This step exports to an environment variable any project settings of an Xcode project.
+# Install cocoapod keys
+This step allows you to install & configure a set of keys. Through the use of the gem cocoapod-keys, this step creates secure values to be useb by your application
 
 
 ## How to use this Step
