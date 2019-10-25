@@ -27,6 +27,13 @@ inputs:
       description: "In case that your workspace has multiple projects, and multiple targets, a `pod key` command may fail because of the conflict in the configuration list. This solves this issue"
       is_expand: true
       is_required: false
+  - podfile_path: "./"
+    opts:
+      title: "Podfile path"
+      summary: "Path where the Podfile configuration is hosted"
+      description: "In case where the Podfile is not hosted at the root of the repo, this variable can be used to point to the right place"
+      is_expand: true
+      is_required: true
   - keys: ""
     opts:
       title: "Keys"
