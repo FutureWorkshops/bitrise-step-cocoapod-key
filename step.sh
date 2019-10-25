@@ -88,10 +88,12 @@ function parse_list {
 echo_info "Configs:"
 echo_details "* project_name: ${project_name}"
 echo_details "* keys: ${keys}"
+echo_details "* podfile_path: ${podfile_path}"
 echo_details "* values: [REDACTED]"
 
 validate_required_input "keys" $keys
 validate_required_input "values" $values
+validate_required_input "podfile_path" $podfile_path
 
 GEM_COMMAND=""
 if [[ -f "Gemfile" || -d ".bundle" ]]; then
@@ -117,6 +119,8 @@ VALUE_LENGTH=${#VALUE_ARRAY[@]}
 if [ ! ${KEY_LENGTH} -eq ${VALUE_LENGTH} ]; then
     echo_fail "Keys array and Values array do not have the same size"
 fi
+
+cd "$(pwd)/$podfile_path"
 
 for (( i=0; i<${KEY_LENGTH}; i++ )); do
     POD_KEY=${KEY_ARRAY[$i]}
