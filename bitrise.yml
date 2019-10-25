@@ -16,12 +16,21 @@ workflows:
         - path: ./Sample
         - is_create_path: true
     - path::./:
-        title: Step Test
+        title: Test script in project in the root
         description: ''
         run_if: true
         inputs:
-        - project_name: ""
-        - podfile_path: "./Project/Test/"
+        - project_name: "FirstSample"
+        - podfile_path: "./"
+        - keys: "FirstSampleKey|SecondaryFirstSampleKey"
+        - values: $VALUES
+    - path::./:
+        title: Test script in project in subfolders
+        description: ''
+        run_if: true
+        inputs:
+        - project_name: "Sample"
+        - podfile_path: "./SubProject/Test/"
         - keys: "SampleKey|SecondarySampleKey"
         - values: $VALUES
           

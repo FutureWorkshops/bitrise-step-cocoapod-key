@@ -120,7 +120,8 @@ if [ ! ${KEY_LENGTH} -eq ${VALUE_LENGTH} ]; then
     echo_fail "Keys array and Values array do not have the same size"
 fi
 
-cd "$(pwd)/$podfile_path"
+CURRENT_FOLDER="$(pwd)"
+cd "$CURRENT_FOLDER/$podfile_path"
 
 for (( i=0; i<${KEY_LENGTH}; i++ )); do
     POD_KEY=${KEY_ARRAY[$i]}
@@ -129,5 +130,7 @@ for (( i=0; i<${KEY_LENGTH}; i++ )); do
     echo_info "Setting key ${POD_KEY}"
     eval "$GEM_COMMAND pod keys set ${POD_KEY} ${POD_VALUE} ${project_name}"
 done
+
+cd "$CURRENT_FOLDER"
 
 IFS=$OIFS
