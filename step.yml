@@ -37,15 +37,15 @@ inputs:
   - keys: ""
     opts:
       title: "Keys"
-      summary: "The list of keys that will be set. With `|` as a separator"
+      summary: "The list of keys that will be set. With `|` as a separator. If you leave this empty, the step will only install the necessary gems"
       description: "The list of keys that will be set. With `|` as a separator. It needs to match the order and size of the `values` property"
       is_expand: true
-      is_required: true
+      is_required: false
   - values: ""
     opts:
       title: "Values"
-      summary: "The list of values that will be set. With `|` as a separator."
+      summary: "The list of values that will be set. With `|` as a separator. If you leave this empty, the step will only install the necessary gems"
       description: "The list of values that will be set. With `|` as a separator. It needs to match the order and size of the `keys` property"
       is_expand: true
-      is_required: true
+      is_required: false
 outputs:

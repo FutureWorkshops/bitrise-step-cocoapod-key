@@ -16,6 +16,13 @@ workflows:
         - path: ./Sample
         - is_create_path: true
     - path::./:
+        title: Test run script without key & value just to install dependencies
+        description: ''
+        run_if: true
+        inputs:
+        - project_name: "FirstSample"
+        - podfile_path: "./"
+    - path::./:
         title: Test script in project in the root
         description: ''
         run_if: true
@@ -23,7 +30,7 @@ workflows:
         - project_name: "FirstSample"
         - podfile_path: "./"
         - keys: "FirstSampleKey|SecondaryFirstSampleKey"
-        - values: $VALUES
+        - values: "FirstValue|SecondValue"
     - path::./:
         title: Test script in project in subfolders
         description: ''
@@ -32,7 +39,7 @@ workflows:
         - project_name: "Sample"
         - podfile_path: "./SubProject/Test/"
         - keys: "SampleKey|SecondarySampleKey"
-        - values: $VALUES
+        - values: "FirstValue|SecondValue"
           
   # ----------------------------------------------------------------
   # --- workflows to Share this step into a Step Library
