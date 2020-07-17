@@ -19,9 +19,6 @@ workflows:
         title: Test run script without key & value just to install dependencies
         description: ''
         run_if: true
-        inputs:
-        - project_name: "FirstSample"
-        - podfile_path: "./"
     - path::./:
         title: Test script in project in the root
         description: ''
