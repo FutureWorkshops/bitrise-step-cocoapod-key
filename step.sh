@@ -91,8 +91,6 @@ echo_details "* keys: ${keys}"
 echo_details "* podfile_path: ${podfile_path}"
 echo_details "* values: [REDACTED]"
 
-validate_required_input "keys" $keys
-validate_required_input "values" $values
 validate_required_input "podfile_path" $podfile_path
 
 GEM_COMMAND=""
