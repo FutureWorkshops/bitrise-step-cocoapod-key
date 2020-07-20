@@ -1,6 +1,8 @@
 title: "Install cocoapod keys"
 summary: This step allows you to install & configure a set of keys
-description: Through the use of the gem cocoapod-keys, this step creates secure values to be useb by your application
+description: |-
+  Through the use of the gem cocoapod-keys, this step creates secure values to be used by your application. 
+  Or simply install the dependecies of cocoapo-keys, so the plugin can be used by a following cocoapods step.
 website: https://github.com/FutureWorkshops/bitrise-step-cocoapod-key
 source_code_url: https://github.com/FutureWorkshops/bitrise-step-cocoapod-key.git
 support_url: https://github.com/FutureWorkshops/bitrise-step-cocoapod-key/issues
