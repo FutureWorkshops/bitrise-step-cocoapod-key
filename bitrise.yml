@@ -19,24 +19,17 @@ workflows:
         title: Test run script without key & value just to install dependencies
         description: ''
         run_if: true
-    - path::./:
-        title: Test script in project in the root
-        description: ''
-        run_if: true
+    - script:
+        title: Run pod install
+        envs:
+          - FirstSampleKey: FirstSampleKey
+          - SecondaryFirstSampleKey: SecondaryFirstSampleKey
         inputs:
-        - project_name: "FirstSample"
-        - podfile_path: "./"
-        - keys: "FirstSampleKey|SecondaryFirstSampleKey"
-        - values: "FirstValue|SecondValue"
-    - path::./:
-        title: Test script in project in subfolders
-        description: ''
-        run_if: true
-        inputs:
-        - project_name: "Sample"
-        - podfile_path: "./SubProject/Test/"
-        - keys: "SampleKey|SecondarySampleKey"
-        - values: "FirstValue|SecondValue"
+          - content: |-
+              #!/bin/bash
+              FirstSampleKey="${FirstSampleKey}" \
+              SecondaryFirstSampleKey="${SecondaryFirstSampleKey}" \
+              pod install
     - change-workdir:
         title: Roolback to main path
         description: ""

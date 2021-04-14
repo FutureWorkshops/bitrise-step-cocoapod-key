@@ -1,8 +1,7 @@
 title: "Install cocoapod keys"
-summary: This step allows you to install & configure a set of keys
+summary: This step allows you to install cocoapo-keys
 description: |-
-  Through the use of the gem cocoapod-keys, this step creates secure values to be used by your application. 
-  Or simply install the dependecies of cocoapo-keys, so the plugin can be used by a following cocoapods step.
+  This step simply install the dependecies of cocoapo-keys, so the plugin can be used by a following cocoapods step.
 website: https://github.com/FutureWorkshops/bitrise-step-cocoapod-key
 source_code_url: https://github.com/FutureWorkshops/bitrise-step-cocoapod-key.git
 support_url: https://github.com/FutureWorkshops/bitrise-step-cocoapod-key/issues
@@ -38,16 +37,28 @@ inputs:
       is_required: true
   - keys: ""
     opts:
-      title: "Keys"
-      summary: "The list of keys that will be set. With `|` as a separator. If you leave this empty, the step will only install the necessary gems"
-      description: "The list of keys that will be set. With `|` as a separator. It needs to match the order and size of the `values` property"
+      category: Ignored
+      title: "Keys (No longer used)"
+      summary: "Given that this is not the best approach to cocoapod-keys on CI, the list of keys is no longer used."
+      description: |-
+        Previously, this was used to run `pod keys set $KEY $VALUE`, but, on a CI environment, it is better if this is store in the SECRETS of the application.
+        Cocoapod-keys can fetch values from the environment. So, if you have a key named `MyKey`, you just need to create a secret with the same name: `MeyKey = Value`.
+        This is safer since the value never leaves Bitrise secrets, and avoids having it leaked on logs.
+
+        This variable is still listed in the step to avoid that someone that upgrades looses its info. But, it is no longer used.
       is_expand: true
       is_required: false
   - values: ""
     opts:
-      title: "Values"
-      summary: "The list of values that will be set. With `|` as a separator. If you leave this empty, the step will only install the necessary gems"
-      description: "The list of values that will be set. With `|` as a separator. It needs to match the order and size of the `keys` property"
+      category: Ignored
+      title: "Values (No longer used)"
+      summary: "Given that this is not the best approach to cocoapod-keys on CI, the list of values is no longer used."
+      description: |-
+        Previously, this was used to run `pod keys set $KEY $VALUE`, but, on a CI environment, it is better if this is store in the SECRETS of the application.
+        Cocoapod-keys can fetch values from the environment. So, if you have a key named `MyKey`, you just need to create a secret with the same name: `MeyKey = Value`.
+        This is safer since the value never leaves Bitrise secrets, and avoids having it leaked on logs.
+
+        This variable is still listed in the step to avoid that someone that upgrades looses its info. But, it is no longer used.
       is_expand: true
       is_required: false
 outputs:
