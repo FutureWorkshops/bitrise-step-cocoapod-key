@@ -1,5 +1,5 @@
 # Install cocoapod keys
-This step allows you to install & configure a set of keys. Through the use of the gem cocoapod-keys, this step creates secure values to be useb by your application
+This step allows you to install & configure a set of keys. Through the use of the gem cocoapod-keys, this step creates secure values to be used by your application
 
 
 ## How to use this Step
